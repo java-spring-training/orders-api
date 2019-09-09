@@ -4,7 +4,6 @@ import java.sql.SQLException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -22,25 +21,25 @@ public class ApiErrorHandler {
         log.error("Invalid Method", ex);
 
         return new Error(HttpStatus.NOT_FOUND.value(),
-                HttpStatus.NOT_FOUND.getReasonPhrase(),
-                "Entry Api with wrong method");
+                         HttpStatus.NOT_FOUND.getReasonPhrase(),
+                         "Entry Api with wrong method");
     }
 
     @ExceptionHandler(ParameterInvalidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Error handleParameterInvalidException(HttpMessageNotWritableException ex) {
+    public Error handleParameterInvalidException(ParameterInvalidException ex) {
 
         log.error("Invalid Input parameter", ex);
 
         return new Error(HttpStatus.BAD_REQUEST.value(),
-                HttpStatus.BAD_REQUEST.getReasonPhrase(),
-                ex.getMessage());
+                         HttpStatus.BAD_REQUEST.getReasonPhrase(),
+                         ex.getMessage());
     }
 
     @ExceptionHandler(SQLException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Error handlerSQLException(
-            Exception ex) {
+            SQLException ex) {
 
         log.error("SQL Exception", ex);
 
@@ -52,7 +51,7 @@ public class ApiErrorHandler {
     @ExceptionHandler(DataAccessException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Error handlerDataAccessException(
-            Exception ex) {
+            DataAccessException ex) {
 
         log.error("Data Access Exception", ex);
 
