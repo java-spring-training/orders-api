@@ -1,6 +1,8 @@
 package api.controller;
 
+import api.config.ApiConfig;
 import api.domain.entities.object.Customers;
+import api.exception.DataNotFoundException;
 import api.exception.ParameterInvalidException;
 import api.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +29,9 @@ public class CustomerController {
         this.factory = factory;
     }
 
-    @PostMapping("/api/v1/order/addCustomer")
-    public CustomerResponse addCustomer(@Valid @RequestBody CustomerRequestBody requestBody,
-                BindingResult bindingResult) throws ParameterInvalidException {
+    @PostMapping(ApiConfig.ADD_CUSTOMER_URL)
+    public CustomerResponse addCustomer(final @Valid @RequestBody CustomerRequestBody requestBody,
+                final BindingResult bindingResult) throws ParameterInvalidException, DataNotFoundException {
 
         if(bindingResult.hasErrors()) {
             throw new ParameterInvalidException(getErrorMessage(bindingResult));

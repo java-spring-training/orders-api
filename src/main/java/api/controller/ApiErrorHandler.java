@@ -1,5 +1,6 @@
 package api.controller;
 
+import api.exception.DataNotFoundException;
 import api.exception.ParameterInvalidException;
 import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;
@@ -31,6 +32,14 @@ public class ApiErrorHandler {
 
         log.error(String.format("Invalid input parameter. exception=[%s]", ex.getMessage()));
         return new Error(HttpStatus.BAD_REQUEST.value(), "Invalid request parameters", ex.getMessage());
+    }
+
+    @ExceptionHandler(DataNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public Error handleDataNotFoundException(DataNotFoundException ex) {
+
+        log.error(String.format("Data is not found. exception=[%s]", ex.getMessage()));
+        return new Error(HttpStatus.NOT_FOUND.value(), "Data is not found", ex.getMessage());
     }
 
     @ExceptionHandler(InternalServerErrorException.class)

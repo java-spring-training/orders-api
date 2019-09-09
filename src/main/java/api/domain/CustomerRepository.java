@@ -4,7 +4,7 @@ import api.domain.entities.object.Customers;
 
 public interface CustomerRepository {
 
-    boolean addCustomer(Customers customer);
+    void addCustomer(Customers customer);
 
     boolean isExisted(int customerNumber);
 }

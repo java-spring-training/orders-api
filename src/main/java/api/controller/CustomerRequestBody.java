@@ -1,5 +1,6 @@
 package api.controller;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
@@ -32,13 +33,16 @@ public class CustomerRequestBody {
     @Pattern(regexp = "\\d{1,10}|\\z", message = "creditLimit must be number")
     private String creditLimit;
 
+    @Valid
+    private TestData testData;
+
     public CustomerRequestBody() {
     }
 
     public CustomerRequestBody(String customerNumber, String customerName, String contactLastName,
                                String contactFirstName, String phone, String addressLine1, String addressLine2, String city,
                                String state, String postalCode, String country, String salesRepEmployeeNumber,
-                               String creditLimit) {
+                               String creditLimit, TestData testData) {
 
         this.customerNumber = customerNumber;
         this.customerName = customerName;
@@ -53,6 +57,7 @@ public class CustomerRequestBody {
         this.country = country;
         this.salesRepEmployeeNumber = salesRepEmployeeNumber;
         this.creditLimit = creditLimit;
+        this.testData = testData;
     }
 
     public String getCustomerNumber() {
@@ -118,5 +123,13 @@ public class CustomerRequestBody {
     public String getCreditLimit() {
 
         return creditLimit;
+    }
+
+    public TestData getTestData() {
+        return testData;
+    }
+
+    public void setTestData(TestData testData) {
+        this.testData = testData;
     }
 }
