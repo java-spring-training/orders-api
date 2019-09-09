@@ -28,7 +28,7 @@ public class ApiErrorHandler {
     @ExceptionHandler(ParameterInvalidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Error handleParameterInvalidException(
-            HttpRequestMethodNotSupportedException ex) {
+            ParameterInvalidException ex) {
 
         log.error("Invalid Input parameter", ex);
 
@@ -36,7 +36,4 @@ public class ApiErrorHandler {
                 HttpStatus.BAD_REQUEST.getReasonPhrase(),
                 ex.getMessage());
     }
-
-
-
 }

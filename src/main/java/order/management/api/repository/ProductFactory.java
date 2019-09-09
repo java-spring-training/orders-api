@@ -1,25 +1,28 @@
 package order.management.api.repository;
 
-import order.management.api.domain.entities.object.Products;
+import order.management.api.domain.entities.object.Product;
 import order.management.api.domain.value.object.ProductCode;
-import order.management.api.repository.mapper.ProductsModel;
-import org.springframework.stereotype.Component;
+import order.management.api.repository.mapper.ProductModel;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import java.math.BigDecimal;
+
+import org.springframework.stereotype.Component;
 
 @Component
 public class ProductFactory {
+    public Product toProduct(ProductModel customerModel) {
 
-    public List<Products> toListProduct(List<ProductsModel> productsModelList) {
+        ProductCode productCode = new ProductCode(customerModel.getProductCode());
+        String productName = customerModel.getProductName();
+        String productLine = customerModel.getProductLine();
+        String productScale = customerModel.getProductScale();
+        String productVendor = customerModel.getProductVendor();
+        String productDescription = customerModel.getProductDescription();
+        int quantityInStock = customerModel.getQuantityInStock();
+        BigDecimal buyPrice = customerModel.getBuyPrice();
+        BigDecimal mSRP = customerModel.getMSRP();
 
-        return productsModelList.stream().map(this::toProduct).collect(Collectors.toList());
-    }
-
-    private Products toProduct(ProductsModel productsModel) {
-
-        ProductCode productCode = new ProductCode(productsModel.getProductCode());
-
-        return new Products(productCode, productsModel.getProductName());
+        return new Product(productCode, productName, productLine, productScale, productVendor, productDescription,
+                quantityInStock, buyPrice, mSRP);
     }
 }

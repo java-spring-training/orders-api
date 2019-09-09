@@ -1,21 +1,21 @@
 package order.management.api.domain.value.object;
 
-import org.glassfish.jersey.internal.guava.Preconditions;
-import org.springframework.util.StringUtils;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
+/**
+ * ProductCode
+ */
 public class ProductCode {
+    @NotEmpty
+    @Size(min = 15, max = 15, message = "Product code must contain 15 characters")
+    private String code;
 
-    String productCode;
-
-    public ProductCode(String productCode) {
-
-        // business he thong yêu cầu Check productCode Not Null
-        Preconditions.checkArgument(StringUtils.hasText(productCode), "productCode must be not null");
-
-        this.productCode = productCode;
+    public ProductCode(@Size(min = 15, max = 15, message = "Product code must contain 15 characters") String code) {
+        this.code = code;
     }
 
-    public String getProductCode() {
-        return productCode;
+    public String getCode() {
+        return code;
     }
 }

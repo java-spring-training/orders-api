@@ -1,10 +1,11 @@
 package order.management.api.domain;
 
-import order.management.api.domain.entities.object.Products;
+import order.management.api.domain.entities.object.Product;
+import order.management.api.domain.value.object.ProductCode;
 
-import java.util.List;
-
+/**
+ * ProductRepository
+ */
 public interface ProductRepository {
-
-    List<Products> getAll();
+    Product getProductByProductCode(ProductCode productCode);
 }
