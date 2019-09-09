@@ -1,5 +1,6 @@
 package api.controller;
 
+import api.exception.DataExistedException;
 import api.exception.DataNotFoundException;
 import api.exception.ParameterInvalidException;
 import org.apache.log4j.Logger;
@@ -40,6 +41,14 @@ public class ApiErrorHandler {
 
         log.error(String.format("Data is not found. exception=[%s]", ex.getMessage()));
         return new Error(HttpStatus.NOT_FOUND.value(), "Data is not found", ex.getMessage());
+    }
+
+    @ExceptionHandler(DataExistedException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public Error handleDataExistedException(DataExistedException ex) {
+
+        log.error(String.format("Data is existed. exception=[%s]", ex.getMessage()));
+        return new Error(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Data is existed", ex.getMessage());
     }
 
     @ExceptionHandler(InternalServerErrorException.class)

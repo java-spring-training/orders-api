@@ -3,6 +3,7 @@ package api.service;
 import api.domain.CustomerRepository;
 import api.domain.EmployeeRepository;
 import api.domain.entities.object.Customers;
+import api.exception.DataExistedException;
 import api.exception.DataNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,10 +23,10 @@ public class CustomerService {
         this.employeeRepository = employeeRepository;
     }
 
-    public void addCustomer(final Customers customers) throws DataNotFoundException {
+    public void addCustomer(final Customers customers) throws DataNotFoundException, DataExistedException {
 
         if (customerRepository.isExisted(customers.getCustomerNumber().getCustomerNumber())) {
-            throw new DataNotFoundException("Customer number is existed");
+            throw new DataExistedException("Customer number is existed");
         }
 
         if (!ObjectUtils.isEmpty(customers.getSalesRepEmployeeNumber())) {

@@ -1,8 +1,9 @@
 package api.controller;
 
-import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
+import java.math.BigDecimal;
 
 public class CustomerRequestBody {
 
@@ -30,11 +31,8 @@ public class CustomerRequestBody {
     private String country;
     @Pattern(regexp = "\\d{1,10}|\\z", message = "salesRepEmployeeNumber must be number")
     private String salesRepEmployeeNumber;
-    @Pattern(regexp = "\\d{1,10}|\\z", message = "creditLimit must be number")
-    private String creditLimit;
-
-    @Valid
-    private TestData testData;
+    @Min(value = 0)
+    private BigDecimal creditLimit;
 
     public CustomerRequestBody() {
     }
@@ -42,7 +40,7 @@ public class CustomerRequestBody {
     public CustomerRequestBody(String customerNumber, String customerName, String contactLastName,
                                String contactFirstName, String phone, String addressLine1, String addressLine2, String city,
                                String state, String postalCode, String country, String salesRepEmployeeNumber,
-                               String creditLimit, TestData testData) {
+                               BigDecimal creditLimit) {
 
         this.customerNumber = customerNumber;
         this.customerName = customerName;
@@ -57,7 +55,6 @@ public class CustomerRequestBody {
         this.country = country;
         this.salesRepEmployeeNumber = salesRepEmployeeNumber;
         this.creditLimit = creditLimit;
-        this.testData = testData;
     }
 
     public String getCustomerNumber() {
@@ -120,16 +117,8 @@ public class CustomerRequestBody {
         return salesRepEmployeeNumber;
     }
 
-    public String getCreditLimit() {
+    public BigDecimal getCreditLimit() {
 
         return creditLimit;
-    }
-
-    public TestData getTestData() {
-        return testData;
-    }
-
-    public void setTestData(TestData testData) {
-        this.testData = testData;
     }
 }

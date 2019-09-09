@@ -2,6 +2,7 @@ package api.controller;
 
 import api.config.ApiConfig;
 import api.domain.entities.object.Customers;
+import api.exception.DataExistedException;
 import api.exception.DataNotFoundException;
 import api.exception.ParameterInvalidException;
 import api.service.CustomerService;
@@ -31,7 +32,8 @@ public class CustomerController {
 
     @PostMapping(ApiConfig.ADD_CUSTOMER_URL)
     public CustomerResponse addCustomer(final @Valid @RequestBody CustomerRequestBody requestBody,
-                final BindingResult bindingResult) throws ParameterInvalidException, DataNotFoundException {
+                final BindingResult bindingResult) throws ParameterInvalidException, DataNotFoundException,
+                        DataExistedException {
 
         if(bindingResult.hasErrors()) {
             throw new ParameterInvalidException(getErrorMessage(bindingResult));
