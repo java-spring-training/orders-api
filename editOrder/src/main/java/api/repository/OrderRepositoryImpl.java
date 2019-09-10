@@ -45,11 +45,10 @@ public class OrderRepositoryImpl extends JdbcDaoSupport implements OrderReposito
     }
     @Override
     public boolean editOrderDetail (Order order, String productCode) {
-        String sqlEditOrderDetail = "UPDATE orderdetails SET " +
-                "quantityOrdered = ?, " +
-                "priceEach = ?, " +
-                "orderLineNumber = ? " +
-                " WHERE orderNumber = ? AND productCode = ?";
+        String sqlEditOrderDetail = "UPDATE orderdetails" +
+                " SET quantityOrdered = ?, priceEach = ?, orderLineNumber = ? " +
+                " WHERE orderNumber = ?" +
+                " AND productCode = ?";
         this.getJdbcTemplate().update(sqlEditOrderDetail,
                 order.getOrderDetail().getQuanlityOrdered(),
                 order.getOrderDetail().getPriceEach(),

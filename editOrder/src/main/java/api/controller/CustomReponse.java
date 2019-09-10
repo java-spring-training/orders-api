@@ -1,7 +1,5 @@
 package api.controller;
 
-import org.springframework.stereotype.Component;
-
 public class CustomReponse {
 
     private int status;

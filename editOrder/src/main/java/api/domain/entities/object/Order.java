@@ -12,7 +12,15 @@ public class Order {
     private Integer customerNumber;
     private OrderDetail orderDetail;
 
-    public Order(OrderID orderID, String orderDate, String requiredDate, String shippedDate, String status, String comments, Integer customerNumber, OrderDetail orderDetail) {
+    public Order(OrderID orderID,
+                 String orderDate,
+                 String requiredDate,
+                 String shippedDate,
+                 String status,
+                 String comments,
+                 Integer customerNumber,
+                 OrderDetail orderDetail)
+    {
         this.orderID = orderID;
         this.orderDate = orderDate;
         this.requiredDate = requiredDate;

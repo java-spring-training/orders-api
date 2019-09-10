@@ -1,20 +1,17 @@
 package api.controller;
 
-import api.domain.OrderRepository;
 import api.domain.entities.object.Order;
 import api.domain.entities.object.OrderDetail;
 import api.exception.ApiException;
 import api.exception.ParameterInvalidException;
 import api.repository.OrderFactory;
 import api.service.OrderService;
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 public class EditController {
