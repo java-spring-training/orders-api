@@ -1,7 +1,6 @@
 package order.management.api.domain.entities.object;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;

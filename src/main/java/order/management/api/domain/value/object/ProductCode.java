@@ -1,6 +1,5 @@
 package order.management.api.domain.value.object;
 
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 /**

@@ -1,7 +1,5 @@
 package order.management.api.domain.entities.object;
 
-import java.math.BigDecimal;
-
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
