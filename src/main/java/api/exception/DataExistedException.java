@@ -2,7 +2,7 @@ package api.exception;
 
 public class DataExistedException extends Exception {
 
-    public DataExistedException(String message) {
+    public DataExistedException(final String message) {
         super(message);
     }
 }

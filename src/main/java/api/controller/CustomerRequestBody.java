@@ -2,14 +2,15 @@ package api.controller;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.math.BigDecimal;
 
 public class CustomerRequestBody {
 
-    @NotEmpty(message = "customerNumber must not be empty")
-    @Pattern(regexp = "\\d{1,10}|\\z", message = "customerNumber must be number")
-    private String customerNumber;
+    @Min(value = 0, message = "customerNumber is invalid")
+    @NotNull(message = "customerNumber must not be null")
+    private Integer customerNumber;
     @NotEmpty(message = "customerName must not be empty")
     private String customerName;
     @NotEmpty(message = "contactLastName must not be empty")
@@ -25,21 +26,21 @@ public class CustomerRequestBody {
     @NotEmpty(message = "city must not be empty")
     private String city;
     private String state;
-    @Pattern(regexp = "\\d{1,10}|\\z", message = "postalCode must be number")
+    @Pattern(regexp = "\\d{1,10}", message = "postalCode must be number")
     private String postalCode;
     @NotEmpty(message = "country must not be empty")
     private String country;
-    @Pattern(regexp = "\\d{1,10}|\\z", message = "salesRepEmployeeNumber must be number")
-    private String salesRepEmployeeNumber;
+    @Min(value = 0)
+    private Integer salesRepEmployeeNumber;
     @Min(value = 0)
     private BigDecimal creditLimit;
 
     public CustomerRequestBody() {
     }
 
-    public CustomerRequestBody(String customerNumber, String customerName, String contactLastName,
+    public CustomerRequestBody(Integer customerNumber, String customerName, String contactLastName,
                                String contactFirstName, String phone, String addressLine1, String addressLine2, String city,
-                               String state, String postalCode, String country, String salesRepEmployeeNumber,
+                               String state, String postalCode, String country, Integer salesRepEmployeeNumber,
                                BigDecimal creditLimit) {
 
         this.customerNumber = customerNumber;
@@ -57,7 +58,7 @@ public class CustomerRequestBody {
         this.creditLimit = creditLimit;
     }
 
-    public String getCustomerNumber() {
+    public Integer getCustomerNumber() {
 
         return customerNumber;
     }
@@ -112,7 +113,7 @@ public class CustomerRequestBody {
         return country;
     }
 
-    public String getSalesRepEmployeeNumber() {
+    public Integer getSalesRepEmployeeNumber() {
 
         return salesRepEmployeeNumber;
     }

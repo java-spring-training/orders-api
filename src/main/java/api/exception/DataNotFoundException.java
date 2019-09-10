@@ -2,7 +2,7 @@ package api.exception;
 
 public class DataNotFoundException extends Exception {
 
-    public DataNotFoundException(String message) {
+    public DataNotFoundException(final String message) {
         super(message);
     }
 }

@@ -59,4 +59,13 @@ public class ApiErrorHandler {
         return new Error(HttpStatus.INTERNAL_SERVER_ERROR.value(), HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(),
                 ex.getMessage());
     }
+
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public Error handleException(Exception ex) {
+
+        log.error(String.format("Internal server. exception=[%s]", ex.getMessage()));
+        return new Error(HttpStatus.INTERNAL_SERVER_ERROR.value(), HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(),
+                ex.getMessage());
+    }
 }

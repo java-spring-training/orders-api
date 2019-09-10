@@ -2,7 +2,7 @@ package api.exception;
 
 public class ParameterInvalidException extends Exception {
 
-    public ParameterInvalidException(String message) {
+    public ParameterInvalidException(final String message) {
         super(message);
     }
 }
