@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import order.management.api.service.OrderService;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -36,7 +34,7 @@ public class OrderController {
      * @return
      * @throws ParameterInvalidException
      */
-    @GetMapping("/orders")
+    @GetMapping("${api.orders.list}")
     public OrderResponse listOrderWithRequestParameters(
             @Valid @ModelAttribute OrderModelAttribute orderModelAttribute,
             BindingResult bindingResult) throws ParameterInvalidException {
@@ -49,16 +47,13 @@ public class OrderController {
 
         OrderNumber orderNumber = new OrderNumber(orderModelAttribute.getOrderNumber());
 
-        Order order = orderService.getOrderByOrderNumber(orderNumber);
-        List<Order> ordersList = new ArrayList<>();
-        ordersList.add(order);
-        return factory.toOrderResponse(ordersList);
+        List<Order> orders = orderService.getOrdersByOrderNumber(orderNumber);
+
+        return factory.toOrderResponse(orders);
     }
 
     private String getErrorMessage(BindingResult bindingResult) {
 
-        // Create message from BindingResult
-        // Ex: 'name': must not be empty
         StringBuilder message = new StringBuilder();
         bindingResult.getFieldErrors().forEach(fieldError -> message.append("'").append(fieldError.getField())
                 .append("'").append(": ").append(fieldError.getDefaultMessage()).append(", "));

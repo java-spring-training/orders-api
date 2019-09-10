@@ -4,7 +4,6 @@ import javax.validation.constraints.*;
 
 public class OrderModelAttribute {
 
-    @NotNull
     @Min(value = 0)
     private Integer orderNumber;
 

@@ -23,21 +23,14 @@ public class OrderDetail {
     @NotNull
     private BigDecimal priceEach;
 
-    @NotNull
-    private int orderLineNumber;
-
     private Product product;
 
-    public OrderDetail(@NotNull OrderNumber orderNumber, @NotNull ProductCode productCode, @NotNull int quantityOrdered, @NotNull BigDecimal priceEach,
-            @NotNull int orderLineNumber) {
+    public OrderDetail(@NotNull OrderNumber orderNumber, @NotNull ProductCode productCode, @NotNull int quantityOrdered,
+            @NotNull BigDecimal priceEach) {
         this.orderNumber = orderNumber;
         this.productCode = productCode;
         this.quantityOrdered = quantityOrdered;
         this.priceEach = priceEach;
-        this.orderLineNumber = orderLineNumber;
-    }
-
-    public OrderDetail() {
     }
 
     public OrderNumber getOrderNumber() {
@@ -70,14 +63,6 @@ public class OrderDetail {
 
     public void setPriceEach(BigDecimal priceEach) {
         this.priceEach = priceEach;
-    }
-
-    public int getOrderLineNumber() {
-        return orderLineNumber;
-    }
-
-    public void setOrderLineNumber(int orderLineNumber) {
-        this.orderLineNumber = orderLineNumber;
     }
 
     public Product getProduct() {

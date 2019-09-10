@@ -1,26 +1,40 @@
 package order.management.api.repository.mapper;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class OrderModel {
 
     private int orderNumber;
     private Date orderDate;
-    private Date requiredDate;
-    private Date shippedDate;
     private String status;
-    private String comments;
+    private String productCode;
+    private String productName;
+    private BigDecimal buyPrice;
+    private int quantityOrdered;
     private int customerNumber;
+    private String customerName;
+    private String phone;
+    private String country;
+    private int salesRepEmployeeNumber;
+    private String employeeEmail;
 
-    public OrderModel(int orderNumber, Date orderDate, Date requiredDate, Date shippedDate, String status,
-                      String comments, int customerNumber) {
+    public OrderModel(int orderNumber, Date orderDate, String status, String productCode, String productName,
+            BigDecimal buyPrice, int quantityOrdered, int customerNumber, String customerName, String phone,
+            String country, int salesRepEmployeeNumber, String employeeEmail) {
         this.orderNumber = orderNumber;
         this.orderDate = orderDate;
-        this.requiredDate = requiredDate;
-        this.shippedDate = shippedDate;
         this.status = status;
-        this.comments = comments;
+        this.productCode = productCode;
+        this.productName = productName;
+        this.buyPrice = buyPrice;
+        this.quantityOrdered = quantityOrdered;
         this.customerNumber = customerNumber;
+        this.customerName = customerName;
+        this.phone = phone;
+        this.country = country;
+        this.salesRepEmployeeNumber = salesRepEmployeeNumber;
+        this.employeeEmail = employeeEmail;
     }
 
     public int getOrderNumber() {
@@ -39,22 +53,6 @@ public class OrderModel {
         this.orderDate = orderDate;
     }
 
-    public Date getRequiredDate() {
-        return requiredDate;
-    }
-
-    public void setRequiredDate(Date requiredDate) {
-        this.requiredDate = requiredDate;
-    }
-
-    public Date getShippedDate() {
-        return shippedDate;
-    }
-
-    public void setShippedDate(Date shippedDate) {
-        this.shippedDate = shippedDate;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -63,12 +61,36 @@ public class OrderModel {
         this.status = status;
     }
 
-    public String getComments() {
-        return comments;
+    public String getProductCode() {
+        return productCode;
     }
 
-    public void setComments(String comments) {
-        this.comments = comments;
+    public void setProductCode(String productCode) {
+        this.productCode = productCode;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public BigDecimal getBuyPrice() {
+        return buyPrice;
+    }
+
+    public void setBuyPrice(BigDecimal buyPrice) {
+        this.buyPrice = buyPrice;
+    }
+
+    public int getQuantityOrdered() {
+        return quantityOrdered;
+    }
+
+    public void setQuantityOrdered(int quantityOrdered) {
+        this.quantityOrdered = quantityOrdered;
     }
 
     public int getCustomerNumber() {
@@ -79,4 +101,43 @@ public class OrderModel {
         this.customerNumber = customerNumber;
     }
 
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public int getSalesRepEmployeeNumber() {
+        return salesRepEmployeeNumber;
+    }
+
+    public void setSalesRepEmployeeNumber(int salesRepEmployeeNumber) {
+        this.salesRepEmployeeNumber = salesRepEmployeeNumber;
+    }
+
+    public String getEmployeeEmail() {
+        return employeeEmail;
+    }
+
+    public void setEmployeeEmail(String employeeEmail) {
+        this.employeeEmail = employeeEmail;
+    }
 }

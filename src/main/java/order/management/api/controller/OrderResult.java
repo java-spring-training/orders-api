@@ -1,43 +1,46 @@
 package order.management.api.controller;
 
-import java.util.List;
+import java.math.BigDecimal;
+import java.util.Date;
 
 public class OrderResult {
 
-    private Integer orderNumber;
-    private String orderDate;
+    private int orderNumber;
+    private Date orderDate;
     private String status;
+    private String productName;
+    private BigDecimal buyPrice;
     private String customerName;
     private String phone;
     private String country;
     private String employeeEmail;
-    private List<OrderDetailResult> orderDetailResults;
 
-    public OrderResult(Integer orderNumber, String orderDate, String status, String customerName, String phone,
-            String country, String employeeEmail, List<OrderDetailResult> orderDetailResults) {
+    public OrderResult(int orderNumber, Date orderDate, String status, String productName, BigDecimal buyPrice,
+            String customerName, String phone, String country, String employeeEmail) {
         this.orderNumber = orderNumber;
         this.orderDate = orderDate;
         this.status = status;
+        this.productName = productName;
+        this.buyPrice = buyPrice;
         this.customerName = customerName;
         this.phone = phone;
         this.country = country;
         this.employeeEmail = employeeEmail;
-        this.orderDetailResults = orderDetailResults;
     }
 
-    public Integer getOrderNumber() {
+    public int getOrderNumber() {
         return orderNumber;
     }
 
-    public void setOrderNumber(Integer orderNumber) {
+    public void setOrderNumber(int orderNumber) {
         this.orderNumber = orderNumber;
     }
 
-    public String getOrderDate() {
+    public Date getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(String orderDate) {
+    public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
     }
 
@@ -47,6 +50,22 @@ public class OrderResult {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public BigDecimal getBuyPrice() {
+        return buyPrice;
+    }
+
+    public void setBuyPrice(BigDecimal buyPrice) {
+        this.buyPrice = buyPrice;
     }
 
     public String getCustomerName() {
@@ -79,13 +98,5 @@ public class OrderResult {
 
     public void setEmployeeEmail(String employeeEmail) {
         this.employeeEmail = employeeEmail;
-    }
-
-    public List<OrderDetailResult> getOrderDetailResults() {
-        return orderDetailResults;
-    }
-
-    public void setOrderDetailResults(List<OrderDetailResult> orderDetailResults) {
-        this.orderDetailResults = orderDetailResults;
     }
 }

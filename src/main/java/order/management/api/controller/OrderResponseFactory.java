@@ -1,11 +1,11 @@
 package order.management.api.controller;
 
 import order.management.api.domain.entities.object.Order;
-import order.management.api.domain.entities.object.OrderDetail;
 
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,28 +24,17 @@ public class OrderResponseFactory {
 
     private OrderResult toOrderResult(Order order) {
 
-        Integer orderNumber = order.getOrderNumber().getNumber();
-        String orderDate = order.getOrderDate().toString();
+        int orderNumber = order.getOrderNumber().getNumber();
+        Date orderDate = order.getOrderDate();
         String status = order.getStatus();
-        List<OrderDetailResult> orderDetailResults = toOrderDetailResultList(order);
+        String productName = order.getOrderDetail().getProduct().getProductName();
+        BigDecimal buyPrice = order.getOrderDetail().getPriceEach();
         String customerName = order.getCustomer().getCustomerName();
         String phone = order.getCustomer().getPhone();
         String country = order.getCustomer().getCountry();
         String employeeEmail = order.getCustomer().getSalesRepEmployee().getEmail();
 
-        return new OrderResult(orderNumber, orderDate, status, customerName, phone, country, employeeEmail,
-                orderDetailResults);
-    }
-
-    private List<OrderDetailResult> toOrderDetailResultList(Order order) {
-        return order.getOrderDetails().stream().map(this::toOrderDetailResult).collect(Collectors.toList());
-    }
-
-    private OrderDetailResult toOrderDetailResult(OrderDetail orderDetail) {
-
-        String productName = orderDetail.getProduct().getProductName();
-        BigDecimal buyPrice = orderDetail.getPriceEach();
-
-        return new OrderDetailResult(productName, buyPrice);
+        return new OrderResult(orderNumber, orderDate, status, productName, buyPrice, customerName, phone, country,
+                employeeEmail);
     }
 }

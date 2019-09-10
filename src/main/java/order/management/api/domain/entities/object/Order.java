@@ -15,6 +15,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  * Order
  */
 public class Order {
+
     @NotNull
     private OrderNumber orderNumber;
 
@@ -22,32 +23,19 @@ public class Order {
     @DateTimeFormat
     private Date orderDate;
 
-    @NotNull
-    @DateTimeFormat
-    private Date requiredDate;
-
-    @DateTimeFormat
-    private Date shippedDate;
-
     @NotEmpty
     private String status;
 
-    private String comments;
-
-    @NotNull
     private CustomerNumber customerNumber;
 
-    private List<OrderDetail> orderDetails;
+    private OrderDetail orderDetail;
     private Customer customer;
 
-    public Order(@NotNull OrderNumber orderNumber, @NotNull Date orderDate, @NotNull Date requiredDate, Date shippedDate,
-            @NotEmpty String status, String comments, @NotNull CustomerNumber customerNumber) {
+    public Order(@NotNull OrderNumber orderNumber, @NotNull Date orderDate, @NotEmpty String status,
+            CustomerNumber customerNumber) {
         this.orderNumber = orderNumber;
         this.orderDate = orderDate;
-        this.requiredDate = requiredDate;
-        this.shippedDate = shippedDate;
         this.status = status;
-        this.comments = comments;
         this.customerNumber = customerNumber;
     }
 
@@ -67,36 +55,12 @@ public class Order {
         this.orderDate = orderDate;
     }
 
-    public Date getRequiredDate() {
-        return requiredDate;
-    }
-
-    public void setRequiredDate(Date requiredDate) {
-        this.requiredDate = requiredDate;
-    }
-
-    public Date getShippedDate() {
-        return shippedDate;
-    }
-
-    public void setShippedDate(Date shippedDate) {
-        this.shippedDate = shippedDate;
-    }
-
     public String getStatus() {
         return status;
     }
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public String getComments() {
-        return comments;
-    }
-
-    public void setComments(String comments) {
-        this.comments = comments;
     }
 
     public CustomerNumber getCustomerNumber() {
@@ -107,12 +71,12 @@ public class Order {
         this.customerNumber = customerNumber;
     }
 
-    public List<OrderDetail> getOrderDetails() {
-        return orderDetails;
+    public OrderDetail getOrderDetail() {
+        return orderDetail;
     }
 
-    public void setOrderDetails(List<OrderDetail> orderDetails) {
-        this.orderDetails = orderDetails;
+    public void setOrderDetail(OrderDetail orderDetail) {
+        this.orderDetail = orderDetail;
     }
 
     public Customer getCustomer() {
