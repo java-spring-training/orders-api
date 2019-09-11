@@ -23,7 +23,7 @@ public class OrderController {
     }
 
     @GetMapping("/api/v1/orders")
-    public List<OrderResult> ordersByCustomerNumber(
+    public OrderResponse ordersByCustomerNumber(
             @Valid @ModelAttribute OrderModelAttribute orderModelAttribute,
             BindingResult bindingResult) throws ParameterInvalidException {
 
@@ -32,7 +32,7 @@ public class OrderController {
         }
 
         List<OrderDetail> orderList = orderService.getOrdersByCustomer(orderModelAttribute.getCustomerNumber());
-        return orderResponseFactory.toOrderResultList(orderList);
+        return orderResponseFactory.toOrderResponse(orderList);
     }
 
     private String getErrorMessage(BindingResult bindingResult) {

@@ -1,5 +1,6 @@
 package api.controller;
 
+import api.domain.entities.object.Order;
 import api.domain.entities.object.OrderDetail;
 import org.springframework.stereotype.Component;
 
@@ -8,7 +9,7 @@ import java.util.stream.Collectors;
 
 @Component
 public class OrderResponseFactory {
-    public OrderResult toOrderResult(OrderDetail orderDetail) {
+    private OrderResult toOrderResult(OrderDetail orderDetail) {
         return new OrderResult(
                 orderDetail.getOrder().getOrderNumber().getOrderNumber(),
                 orderDetail.getOrder().getOrderDate(),
@@ -22,5 +23,10 @@ public class OrderResponseFactory {
 
     public List<OrderResult> toOrderResultList(List<OrderDetail> orderDetailList) {
         return orderDetailList.stream().map(this::toOrderResult).collect(Collectors.toList());
+    }
+
+    public OrderResponse toOrderResponse(List<OrderDetail> orderDetailList) {
+
+        return new OrderResponse(toOrderResultList(orderDetailList));
     }
 }

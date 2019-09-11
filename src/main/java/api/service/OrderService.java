@@ -1,7 +1,6 @@
 package api.service;
 
 import api.domain.OrderRepository;
-import api.domain.entities.object.Order;
 import api.domain.entities.object.OrderDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

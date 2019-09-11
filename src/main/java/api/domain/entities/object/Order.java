@@ -1,6 +1,9 @@
 package api.domain.entities.object;
 
 import api.domain.value.object.OrderNumber;
+import org.glassfish.jersey.internal.guava.Preconditions;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils;
 
 import java.util.Date;
 
@@ -11,6 +14,10 @@ public class Order {
     private Customer customer;
 
     public Order(OrderNumber orderNumber, Date orderDate, String status, Customer customer) {
+        Preconditions.checkArgument(!ObjectUtils.isEmpty(orderDate), "CustomerNumber must be not empty");
+        Preconditions.checkArgument(!StringUtils.isEmpty(status), "Status must be not empty");
+        Preconditions.checkArgument(!ObjectUtils.isEmpty(customer), "Customer must be not empty");
+
         this.orderNumber = orderNumber;
         this.orderDate = orderDate;
         this.status = status;
