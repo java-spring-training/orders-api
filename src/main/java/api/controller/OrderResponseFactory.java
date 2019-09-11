@@ -9,7 +9,8 @@ import java.util.stream.Collectors;
 @Component
 public class OrderResponseFactory {
     public OrderResult toOrderResult(OrderDetail orderDetail) {
-        return new OrderResult(orderDetail.getOrder().getOrderNumber().getOrderNumber(),
+        return new OrderResult(
+                orderDetail.getOrder().getOrderNumber().getOrderNumber(),
                 orderDetail.getOrder().getOrderDate(),
                 orderDetail.getOrder().getStatus(),
                 orderDetail.getProducts(),

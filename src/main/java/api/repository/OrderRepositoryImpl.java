@@ -35,17 +35,24 @@ public class OrderRepositoryImpl extends JdbcDaoSupport implements OrderReposito
 
     @Override
     public List<OrderDetail> getOrdersByCustomerNumber(int id) {
-        String sql = "SELECT orders.orderNumber, orders.orderDate, orders.status, orders.customerNumber," +
-                " customers.customerNumber, customers.customerName, customers.phone, customers.country," +
-                " employees.email " +
-                "FROM customers INNER JOIN employees ON customers.salesRepEmployeeNumber=employees.employeeNumber " +
-                "INNER JOIN orders ON customers.customerNumber = orders.customerNumber" +
-                " WHERE customers.customerNumber = ?";
+        String sql =
+                "SELECT " +
+                    "orders.orderNumber, " +
+                    "orders.orderDate, " +
+                    "orders.status, orders.customerNumber, " +
+                    "customers.customerNumber, " +
+                    "customers.customerName, " +
+                    "customers.phone, " +
+                    "customers.country, " +
+                    "employees.email " +
+                    "FROM customers " +
+                "INNER JOIN employees ON customers.salesRepEmployeeNumber=employees.employeeNumber " +
+                "INNER JOIN orders ON customers.customerNumber = orders.customerNumber " +
+                "WHERE customers.customerNumber = ?";
 
         List<OrderModel> orderModelList = this.getJdbcTemplate().query(sql, orderMapper, id);
         for (OrderModel orderModel : orderModelList) {
             getProductList(orderModel.getOrderNumber());
-
         }
 
         List<OrderDetail> orderDetailList = new ArrayList<>();
@@ -54,15 +61,20 @@ public class OrderRepositoryImpl extends JdbcDaoSupport implements OrderReposito
             List<Product> productList = getProductList(order.getOrderNumber().getOrderNumber());
             OrderDetail orderDetail = new OrderDetail(order, productList);
             orderDetailList.add(orderDetail);
-
         });
 
         return orderDetailList;
     }
 
     private List<Product> getProductList(int orderId) {
-        String sql = "SELECT productName, buyPrice FROM orderdetails INNER JOIN products ON orderdetails.productCode = products.productCode" +
-                " WHERE orderdetails.orderNumber = ?";
+        String sql =
+                "SELECT " +
+                    "productName, " +
+                    "buyPrice " +
+                "FROM orderdetails " +
+                "INNER JOIN products " +
+                "ON orderdetails.productCode = products.productCode " +
+                "WHERE orderdetails.orderNumber = ?";
 
         List<ProductModel> productModelList = this.getJdbcTemplate().query(sql, productMapper, orderId);
 

@@ -1,4 +1,4 @@
-package api.domain.value.object.order;
+package api.domain.value.object;
 
 import org.glassfish.jersey.internal.guava.Preconditions;
 

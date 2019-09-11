@@ -1,4 +1,4 @@
-package api.domain.value.object.product;
+package api.domain.value.object;
 
 public class ProductCode {
     private String productCode;

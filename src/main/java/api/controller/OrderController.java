@@ -31,7 +31,7 @@ public class OrderController {
             throw new ParameterInvalidException(getErrorMessage(bindingResult));
         }
 
-        List<OrderDetail> orderList = orderService.getOrdersByCustomer(Integer.parseInt(orderModelAttribute.getCustomerNumber()));
+        List<OrderDetail> orderList = orderService.getOrdersByCustomer(orderModelAttribute.getCustomerNumber());
         return orderResponseFactory.toOrderResultList(orderList);
     }
 

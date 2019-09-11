@@ -1,4 +1,4 @@
-package api.domain.value.object.employee;
+package api.domain.value.object;
 
 public class EmployeeNumber {
     private int employeeNumber;

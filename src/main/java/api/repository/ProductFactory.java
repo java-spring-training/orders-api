@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 @Component
 public class ProductFactory {
-    public Product toProduct(ProductModel productModel) {
+    private Product toProduct(ProductModel productModel) {
         return new Product(productModel.getProductName(), productModel.getBuyPrice());
     }
 

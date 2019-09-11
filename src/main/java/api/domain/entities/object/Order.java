@@ -1,16 +1,13 @@
 package api.domain.entities.object;
 
-import api.domain.value.object.order.OrderNumber;
+import api.domain.value.object.OrderNumber;
 
 import java.util.Date;
 
 public class Order {
     private OrderNumber orderNumber;
     private Date orderDate;
-    private Date requiredDate;
-    private Date shippedDate;
     private String status;
-    private String comments;
     private Customer customer;
 
     public Order(OrderNumber orderNumber, Date orderDate, String status, Customer customer) {
@@ -28,20 +25,8 @@ public class Order {
         return orderDate;
     }
 
-    public Date getRequiredDate() {
-        return requiredDate;
-    }
-
-    public Date getShippedDate() {
-        return shippedDate;
-    }
-
     public String getStatus() {
         return status;
-    }
-
-    public String getComments() {
-        return comments;
     }
 
     public Customer getCustomer() {

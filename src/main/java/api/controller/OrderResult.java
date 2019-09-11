@@ -14,13 +14,6 @@ public class OrderResult {
     private String country;
     private String employeeEmail;
 
-    public OrderResult(int orderNumber, Date orderDate, List<Product> products, String employeeEmail) {
-        this.orderNumber = orderNumber;
-        this.orderDate = orderDate;
-        this.products = products;
-        this.employeeEmail = employeeEmail;
-    }
-
     public OrderResult(int orderNumber, Date orderDate, String status, List<Product> products, String customerName, String phone, String country, String employeeEmail) {
         this.orderNumber = orderNumber;
         this.orderDate = orderDate;
