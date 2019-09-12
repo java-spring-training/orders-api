@@ -27,16 +27,16 @@ public class OrderDetail {
      * @param quantityOrdered
      * @param priceEach
      * @param orderLineNumber
+     * @param product
      */
-    public OrderDetail(@NotNull OrderNumber orderNumber, @NotNull ProductCode productCode, @Size(min = 1) Integer quantityOrdered, BigDecimal priceEach, @NotNull Integer orderLineNumber) {
+    public OrderDetail(@NotNull OrderNumber orderNumber, @NotNull ProductCode productCode, @Size(min = 1) Integer quantityOrdered, BigDecimal priceEach, @NotNull Integer orderLineNumber, Product product) {
         this.orderNumber = orderNumber;
         this.productCode = productCode;
         this.quantityOrdered = quantityOrdered;
         this.priceEach = priceEach;
         this.orderLineNumber = orderLineNumber;
+        this.product = product;
     }
-
-
 
     public OrderNumber getOrderNumber() {
         return orderNumber;

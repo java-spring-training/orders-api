@@ -1,39 +1,22 @@
 package order.repository.factory;
 
 import order.domain.entities.object.Customer;
-import order.domain.entities.object.Order;
+import order.domain.entities.object.Employee;
 import order.domain.value.object.CustomerNumber;
-import order.domain.value.object.OrderNumber;
 import order.repository.model.CustomerModel;
-import order.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 public class CustomerFactory {
 
-    private EmployeeService employeeService;
-
     @Autowired
-    public CustomerFactory(EmployeeService employeeService) {
-        this.employeeService = employeeService;
-    }
+    private EmployeeFactory employeeFactory;
 
-    public List<Customer> toListCustomer(List<CustomerModel> customerModelList) {
-
-        return customerModelList.stream().map(this::toOrder).collect(Collectors.toList());
-    }
-
-    public Customer toFirstCustomer(List<CustomerModel> customerModelList) {
-        return toOrder(customerModelList.get(0));
-    }
-
-    private Customer toOrder(CustomerModel customerModel) {
+    public Customer toCustomer(CustomerModel customerModel) {
 
         CustomerNumber customerNumber = new CustomerNumber(customerModel.getCustomerNumber());
+        Employee employee = employeeFactory.toEmployee(customerModel.getEmployeeModel());
 
         return new Customer(
                 customerNumber
@@ -47,7 +30,7 @@ public class CustomerFactory {
                 , customerModel.getState()
                 , customerModel.getPostalCode()
                 , customerModel.getCountry()
-                , employeeService.findByEmployeeNumber(customerModel.getSalesRepEmployeeNumber())
+                , employee
                 , customerModel.getCreditLimit()
         );
     }

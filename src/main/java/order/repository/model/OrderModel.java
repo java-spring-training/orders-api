@@ -1,6 +1,7 @@
 package order.repository.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class OrderModel {
     private Integer orderNumber;
@@ -10,6 +11,8 @@ public class OrderModel {
     private String status;
     private String comments;
     private Integer customerNumber;
+    private List<OrderDetailModel> orderDetailModelList;
+    private CustomerModel customerModel;
 
     public OrderModel(Integer orderNumber, Date orderDate, Date requiredDate, Date shippedDate, String status, String comments, Integer customerNumber) {
         this.orderNumber = orderNumber;
@@ -47,5 +50,21 @@ public class OrderModel {
 
     public Integer getCustomerNumber() {
         return customerNumber;
+    }
+
+    public void setOrderDetailModelList(List<OrderDetailModel> orderDetailModelList) {
+        this.orderDetailModelList = orderDetailModelList;
+    }
+
+    public List<OrderDetailModel> getOrderDetailModelList(){
+        return this.orderDetailModelList;
+    }
+
+    public void setCustomerModel(CustomerModel customerModel) {
+        this.customerModel = customerModel;
+    }
+
+    public CustomerModel getCustomerModel() {
+        return customerModel;
     }
 }

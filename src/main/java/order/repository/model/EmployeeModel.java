@@ -1,10 +1,5 @@
 package order.repository.model;
 
-import order.domain.value.object.EmployeeNumber;
-
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
 public class EmployeeModel {
     private Integer employeeNumber;
     private String lastName;

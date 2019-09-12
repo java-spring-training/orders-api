@@ -1,5 +1,7 @@
 package order.controller;
 
+import order.controller.results.object.OrderResult;
+
 import java.util.List;
 
 public class OrderResponse {

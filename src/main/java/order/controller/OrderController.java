@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 public class OrderController {
+    final static String API_GET_ORDERS = "/api/v1/orders";
 
     private OrderService orderService;
     private OrderResponseFactory factory;
@@ -25,7 +26,7 @@ public class OrderController {
         this.apiConfig = apiConfig;
     }
 
-    @GetMapping("/orders")
+    @GetMapping(API_GET_ORDERS)
     public OrderResponse listAllOrder() {
         List<Order> orderList = orderService.getAll();
         return factory.toOrderResponse(orderList);

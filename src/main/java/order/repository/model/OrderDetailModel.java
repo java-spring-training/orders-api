@@ -8,6 +8,8 @@ public class OrderDetailModel {
     private Integer quantityOrdered;
     private BigDecimal priceEach;
     private Integer orderLineNumber;
+    private ProductModel productModel;
+    private OrderModel orderModel;
 
     public OrderDetailModel(Integer orderNumber, String productCode, Integer quantityOrdered, BigDecimal priceEach, Integer orderLineNumber) {
         this.orderNumber = orderNumber;
@@ -35,5 +37,21 @@ public class OrderDetailModel {
 
     public Integer getOrderLineNumber() {
         return orderLineNumber;
+    }
+
+    public ProductModel getProductModel() {
+        return productModel;
+    }
+
+    public OrderModel getOrderModel() {
+        return orderModel;
+    }
+
+    public void setProductModel(ProductModel productModel) {
+        this.productModel = productModel;
+    }
+
+    public void setOrderModel(OrderModel orderModel) {
+        this.orderModel = orderModel;
     }
 }

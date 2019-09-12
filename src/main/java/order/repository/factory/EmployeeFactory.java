@@ -11,16 +11,7 @@ import java.util.stream.Collectors;
 @Component
 public class EmployeeFactory {
 
-    public List<Employee> toListEmployee(List<EmployeeModel> employeeModelList) {
-
-        return employeeModelList.stream().map(this::toEmployee).collect(Collectors.toList());
-    }
-
-    public Employee toFirstEmployee(List<EmployeeModel> employeeModelList) {
-        return toEmployee(employeeModelList.get(0));
-    }
-
-    private Employee toEmployee(EmployeeModel employeeModel) {
+    public Employee toEmployee(EmployeeModel employeeModel) {
 
         EmployeeNumber employeeNumber = new EmployeeNumber(employeeModel.getEmployeeNumber());
 

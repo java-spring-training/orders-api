@@ -20,7 +20,7 @@ public class ProductFactory {
         return toProduct(productModelList.get(0));
     }
 
-    private Product toProduct(ProductModel productModel) {
+    public Product toProduct(ProductModel productModel) {
 
         ProductCode productCode = new ProductCode(productModel.getProductCode());
 

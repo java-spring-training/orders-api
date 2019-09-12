@@ -5,6 +5,7 @@ import order.domain.value.object.OrderNumber;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
 
 public class Order {
     @NotNull
@@ -19,6 +20,7 @@ public class Order {
     private String status;
     private String comments;
     private Customer customer;
+    private List<OrderDetail> orderDetailList;
 
     /**
      *
@@ -66,5 +68,13 @@ public class Order {
 
     public Customer getCustomer() {
         return customer;
+    }
+
+    public List<OrderDetail> getOrderDetailList() {
+        return orderDetailList;
+    }
+
+    public void setOrderDetailList(List<OrderDetail> orderDetailList) {
+        this.orderDetailList = orderDetailList;
     }
 }

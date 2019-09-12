@@ -16,6 +16,7 @@ public class CustomerModel {
     private String country;
     private Integer salesRepEmployeeNumber;
     private BigDecimal creditLimit;
+    private EmployeeModel employeeModel;
 
     public CustomerModel(Integer customerNumber, String customerName, String contactLastName, String contactFirstName, String phone, String addressLine1, String addressLine2, String city, String state, String postalCode, String country, Integer salesRepEmployeeNumber, BigDecimal creditLimit) {
         this.customerNumber = customerNumber;
@@ -83,5 +84,13 @@ public class CustomerModel {
 
     public BigDecimal getCreditLimit() {
         return creditLimit;
+    }
+
+    public EmployeeModel getEmployeeModel() {
+        return employeeModel;
+    }
+
+    public void setEmployeeModel(EmployeeModel employeeModel) {
+        this.employeeModel = employeeModel;
     }
 }

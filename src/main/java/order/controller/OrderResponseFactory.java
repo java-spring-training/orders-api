@@ -1,27 +1,16 @@
 package order.controller;
 
+import order.controller.results.object.*;
 import order.domain.entities.object.Order;
 import order.domain.entities.object.OrderDetail;
-import order.domain.entities.object.Product;
-import order.service.OrderDetailService;
-import order.service.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
 public class OrderResponseFactory {
-
-    OrderDetailService orderDetailService;
-    ProductService productService;
-
-    @Autowired
-    public OrderResponseFactory(OrderDetailService orderDetailService, ProductService productService) {
-        this.orderDetailService = orderDetailService;
-        this.productService = productService;
-    }
 
     public OrderResponse toOrderResponse(List<Order> orderList) {
 
@@ -34,18 +23,43 @@ public class OrderResponseFactory {
     }
 
     private OrderResult toOrderResult(Order order) {
+        List<OrderDetailResult> orderDetailResultList = new ArrayList<>();
+        for(OrderDetail orderDetail: order.getOrderDetailList()) {
+            ProductResult productResult = new ProductResult(
+                    orderDetail.getProduct().getProductCode().getProductCode()
+                    , orderDetail.getProduct().getProductName()
+                    , orderDetail.getProduct().getBuyPrice()
+            );
+
+            OrderDetailResult orderDetailResult = new OrderDetailResult(
+                    orderDetail.getQuantityOrdered()
+                    , orderDetail.getPriceEach()
+                    , orderDetail.getOrderLineNumber()
+                    , productResult
+            );
+
+            orderDetailResultList.add(orderDetailResult);
+        }
+
+        EmployeeResult employeeResult = new EmployeeResult(order.getCustomer().getEmployee().getEmail());
+
+        CustomerResult customerResult = new CustomerResult(
+                order.getCustomer().getCustomerName()
+                , order.getCustomer().getPhone()
+                , order.getCustomer().getCity()
+                , order.getCustomer().getCountry()
+                , employeeResult
+        );
 
         OrderResult orderResult = new OrderResult(
                 order.getOrderNumber().getOrderNumber()
                 , order.getOrderDate()
-                , order.getRequiredDate()
-                , order.getShippedDate()
                 , order.getStatus()
-                , order.getComments()
-                , order.getCustomer()
+                , customerResult
         );
 
-        orderResult.setOderDetail(orderDetailService.findByOrderNumber(order.getOrderNumber().getOrderNumber()));
+        orderResult.setOrderDetailResultList(orderDetailResultList);
+
         return orderResult;
     }
 }
