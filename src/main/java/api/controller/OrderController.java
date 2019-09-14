@@ -1,6 +1,8 @@
 package api.controller;
 
+import api.config.ApiConfig;
 import api.domain.entities.object.OrderDetail;
+import api.exception.DBException;
 import api.exception.ParameterInvalidException;
 import api.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +24,10 @@ public class OrderController {
         this.orderResponseFactory = orderResponseFactory;
     }
 
-    @GetMapping("/api/v1/orders")
+    @GetMapping(ApiConfig.LIST_ORDER_BY_CUSTOMER_URL)
     public OrderResponse ordersByCustomerNumber(
             @Valid @ModelAttribute OrderModelAttribute orderModelAttribute,
-            BindingResult bindingResult) throws ParameterInvalidException {
+            BindingResult bindingResult) throws ParameterInvalidException, DBException {
 
         if (bindingResult.hasErrors()) {
             throw new ParameterInvalidException(getErrorMessage(bindingResult));

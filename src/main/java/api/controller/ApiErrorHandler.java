@@ -1,5 +1,6 @@
 package api.controller;
 
+import api.exception.DBException;
 import api.exception.ParameterInvalidException;
 import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;
@@ -33,6 +34,16 @@ public class ApiErrorHandler {
 
         return new Error(HttpStatus.BAD_REQUEST.value(),
                 HttpStatus.BAD_REQUEST.getReasonPhrase(),
+                ex.getMessage());
+    }
+
+    @ExceptionHandler(DBException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public Error handleCustomerNotFoundException(
+            DBException ex) {
+
+        return new Error(HttpStatus.BAD_REQUEST.value(),
+                "DB ERROR",
                 ex.getMessage());
     }
 }
