@@ -4,15 +4,15 @@ import org.glassfish.jersey.internal.guava.Preconditions;
 import org.springframework.util.StringUtils;
 
 public class CustomerNumber {
-    Integer CustomerNumber;
+    Integer customerNumber;
 
-    public CustomerNumber(Integer CustomerNumber) {
-//        Preconditions.checkArgument(StringUtils.hasText(productCode), "productCode must be not null");
+    public CustomerNumber(Integer customerNumber) {
+        Preconditions.checkArgument(customerNumber > 0, "customerNumber must be > 0");
 
-        this.CustomerNumber = CustomerNumber;
+        this.customerNumber = customerNumber;
     }
 
-    public Integer getCustomerNumber() {
-        return CustomerNumber;
+    public Integer value() {
+        return customerNumber;
     }
 }

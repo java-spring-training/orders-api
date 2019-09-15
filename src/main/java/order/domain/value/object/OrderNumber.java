@@ -7,12 +7,12 @@ public class OrderNumber {
     Integer orderNumber;
 
     public OrderNumber(Integer orderNumber) {
-        //Preconditions.checkArgument(StringUtils.hasText(productCode), "productCode must be not null");
+        Preconditions.checkArgument(orderNumber > 0, "orderNumber must be > 0");
 
         this.orderNumber = orderNumber;
     }
 
-    public Integer getOrderNumber() {
+    public Integer value() {
         return orderNumber;
     }
 }

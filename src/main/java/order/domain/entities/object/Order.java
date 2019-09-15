@@ -16,7 +16,7 @@ public class Order {
     @NotNull
     private Date requiredDate;
     private Date shippedDate;
-    @Size(max = 50)
+    @Size(max = 2)
     private String status;
     private String comments;
     private Customer customer;
@@ -32,7 +32,7 @@ public class Order {
      * @param comments
      * @param customer
      */
-    public Order(@NotNull OrderNumber orderNumber, @NotNull Date orderDate, @NotNull Date requiredDate, Date shippedDate, @Size(max = 50) String status, String comments, Customer customer) {
+    public Order(@NotNull OrderNumber orderNumber, @NotNull Date orderDate, @NotNull Date requiredDate, Date shippedDate, @Size(max = 2) String status, String comments, Customer customer) {
         this.orderNumber = orderNumber;
         this.orderDate = orderDate;
         this.requiredDate = requiredDate;

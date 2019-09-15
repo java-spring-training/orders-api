@@ -26,7 +26,7 @@ public class OrderResponseFactory {
         List<OrderDetailResult> orderDetailResultList = new ArrayList<>();
         for(OrderDetail orderDetail: order.getOrderDetailList()) {
             ProductResult productResult = new ProductResult(
-                    orderDetail.getProduct().getProductCode().getProductCode()
+                    orderDetail.getProduct().getProductCode().value()
                     , orderDetail.getProduct().getProductName()
                     , orderDetail.getProduct().getBuyPrice()
             );
@@ -52,7 +52,7 @@ public class OrderResponseFactory {
         );
 
         OrderResult orderResult = new OrderResult(
-                order.getOrderNumber().getOrderNumber()
+                order.getOrderNumber().value()
                 , order.getOrderDate()
                 , order.getStatus()
                 , customerResult

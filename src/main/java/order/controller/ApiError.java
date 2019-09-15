@@ -1,12 +1,12 @@
 package order.controller;
 
-public class Error {
+public class ApiError {
 
     private int code;
     private String message;
     private String detail;
 
-    public Error(int code, String message, String detail) {
+    public ApiError(int code, String message, String detail) {
         this.code = code;
         this.message = message;
         this.detail = detail;

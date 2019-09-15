@@ -12,11 +12,11 @@ public class ErrorPageController implements ErrorController {
     private Logger log = Logger.getLogger(ErrorPageController.class);
 
     @RequestMapping("/404")
-    public Error HandlerErrorNotFoundUrl() {
+    public ApiError HandlerErrorNotFoundUrl() {
 
         log.error("Invalid Url");
 
-        return new Error(HttpStatus.NOT_FOUND.value(),
+        return new ApiError(HttpStatus.NOT_FOUND.value(),
                 HttpStatus.NOT_FOUND.getReasonPhrase(),
                 "Entry Api with wrong Url");
     }

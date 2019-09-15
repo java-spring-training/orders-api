@@ -12,7 +12,7 @@ public class ProductCode {
         this.productCode = productCode;
     }
 
-    public String getProductCode() {
+    public String value() {
         return productCode;
     }
 }
