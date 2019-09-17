@@ -41,10 +41,11 @@ public class OrderResponseFactory {
             orderDetailResultList.add(orderDetailResult);
         }
 
-        EmployeeResult employeeResult = new EmployeeResult(order.getCustomer().getEmployee().getEmail());
+        EmployeeResult employeeResult = new EmployeeResult(order.getCustomer().getCustomerNumber().value(), order.getCustomer().getEmployee().getEmail());
 
         CustomerResult customerResult = new CustomerResult(
-                order.getCustomer().getCustomerName()
+                order.getCustomer().getCustomerNumber().value()
+                , order.getCustomer().getCustomerName()
                 , order.getCustomer().getPhone()
                 , order.getCustomer().getCity()
                 , order.getCustomer().getCountry()

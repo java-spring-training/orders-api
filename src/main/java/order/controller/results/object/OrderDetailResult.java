@@ -28,7 +28,7 @@ public class OrderDetailResult {
         return orderLineNumber;
     }
 
-    @JsonGetter("product")
+    //@JsonGetter("product")
     public ProductResult getProductResult() {
         return productResult;
     }

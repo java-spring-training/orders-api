@@ -30,7 +30,7 @@ public class OrderResult {
         return status;
     }
 
-    @JsonGetter("customer")
+    //@JsonGetter("customer")
     public CustomerResult getCustomerResult() {
         return customerResult;
     }
@@ -39,7 +39,7 @@ public class OrderResult {
         this.orderDetailResultList = orderDetailResultList;
     }
 
-    @JsonGetter("orderDetail")
+    //@JsonGetter("orderDetail")
     public List<OrderDetailResult> getOrderDetailResultList() {
         return orderDetailResultList;
     }

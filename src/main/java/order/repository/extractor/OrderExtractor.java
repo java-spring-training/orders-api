@@ -1,6 +1,5 @@
 package order.repository.extractor;
 
-import order.domain.entities.object.OrderDetail;
 import order.repository.model.*;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.ResultSetExtractor;
